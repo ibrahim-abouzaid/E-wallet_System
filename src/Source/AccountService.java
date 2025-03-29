@@ -6,11 +6,13 @@ import model.WalletSystem;
 public interface AccountService {
     int searchForAccount(String username);
     boolean creatAccount(Account account);
-    int login(Account account);
+    boolean login(Account account);
 
-    void depositOrWithdraw(int indexOfAccount,double addedMoney,char op);
+    boolean deposit(String loggedUser ,double addedMoney);
+    boolean withdraw(String loggedUser,double addedMoney);
+
     double getBalance(int indexOfAccount);
-    void showDetails(int indexOfAccount);
+    void showDetails(String loggedUser);
 
     void getAll();
 

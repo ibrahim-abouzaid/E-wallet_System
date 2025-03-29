@@ -28,10 +28,10 @@ public class AppServiceImplementaion implements AppService {
         System.out.println("------>Login Account<------");
         Account account = accountDetails();
 
-        int hasAccount = accountService.login(account);
-        if (hasAccount != -1) {
+        boolean hasAccount = accountService.login(account);
+        if (hasAccount) {
             System.out.println("Account login successfully");
-            mainPage(hasAccount);
+            transactionPage(account);
 
         } else {
             System.out.println("Error: incorrect username or password.");
@@ -39,7 +39,6 @@ public class AppServiceImplementaion implements AppService {
     }
 
     void createAccount() {
-
         System.out.println("------>Create Account<------");
         Account account = accountDetails();
         if (!validation.validateUserName(account.getUserName())) {
@@ -57,7 +56,7 @@ public class AppServiceImplementaion implements AppService {
 
     }
 
-    void mainPage(int indexOfAccount) {
+    void transactionPage(Account loggedInAccount) {
 
         boolean exit = false;
         while (!exit) {
@@ -66,17 +65,17 @@ public class AppServiceImplementaion implements AppService {
 
             switch (option) {
                 case "a":
-                    deposit(indexOfAccount);
+                    deposit(loggedInAccount);
                     break;
                 case "b":
-                    withdraw(indexOfAccount);
+                    withdraw(loggedInAccount);
                     break;
                 case "c":
                     //problem need to solve
-                    transferTo(indexOfAccount);
+                    transferTo(loggedInAccount);
                     break;
                 case "d":
-                    showDetails(indexOfAccount);
+                    showDetails(loggedInAccount);
                     break;
                 case "e":
                     System.out.println("logout");
@@ -91,54 +90,47 @@ public class AppServiceImplementaion implements AppService {
         }
     }
 
-    private void transferTo(int indexOfThisAccount) {
+    private void transferTo(Account loggedInAccount) {
         System.out.println("------------>transfer<------------");
         System.out.println("Enter the username who get money");
         String ToUserName = scanner.nextLine();
-        int indexOfOtherUser = accountService.searchForAccount(ToUserName);
-        if (indexOfOtherUser != -1) {
+        int validUser = accountService.searchForAccount(ToUserName);
+        if (validUser != -1) {
             System.out.println("please enter amount to transfer:.");
             double transferMoney = getMoney();
 
-            //check current user balance
-            if (accountService.getBalance(indexOfThisAccount) < transferMoney) {
-                System.out.println("sorry no enough money in your account");
-            } else {
-                accountService.depositOrWithdraw(indexOfThisAccount, transferMoney, '-');
-                accountService.depositOrWithdraw(indexOfOtherUser, transferMoney, '+');
-                System.out.println("transaction is done");
 
+            if (transferMoney != -1) {
+                //if the deposit or withdraw return false that mean there is error with the transaction
+                if (accountService.withdraw(loggedInAccount.getUserName(), transferMoney)
+                        && accountService.deposit(ToUserName, transferMoney)) {
+                    System.out.println("transaction is done");
+                }
             }
-        } else {
-            System.out.println("error this username not found");
         }
     }
 
-    private void withdraw(int indexOfThisAccount) {
+    private void withdraw(Account loggedInAccount) {
         System.out.println("------------>withdraw<------------");
         System.out.println("please enter amount to withdraw.");
 
         double moneyFlow = getMoney();
-
-        if ( accountService.getBalance(indexOfThisAccount) < moneyFlow) {
-            System.out.println("error no enough money in your account :(");
-        } else if(moneyFlow!=0.0){
-            accountService.depositOrWithdraw(indexOfThisAccount, moneyFlow, '-');
+        if (moneyFlow != -1) {
+            accountService.withdraw(loggedInAccount.getUserName(), moneyFlow);
             System.out.println("trrrr trrr trrr : receive your money :)  trrr");
-            System.out.println("your balance is " + accountService.getBalance(indexOfThisAccount));
+            System.out.println("your balance is " + loggedInAccount.getBalance());
         }
-//        scanner.nextLine();
 
     }
 
-    void deposit(int indexOfAccount) {
+    void deposit(Account loggedInAccount) {
         System.out.println("------------>Deposit<------------");
         System.out.println("please enter amount to deposit.");
         double moneyFlow = getMoney();
-        if(moneyFlow!=0.0){
-        accountService.depositOrWithdraw(indexOfAccount, moneyFlow, '+');
-        System.out.println("money added successfully");
-        System.out.println("your balance is " + accountService.getBalance(indexOfAccount));
+        if (moneyFlow != -1) {
+            accountService.deposit(loggedInAccount.getUserName(), moneyFlow);
+            System.out.println("money added successfully");
+            System.out.println("your balance is " + loggedInAccount.getBalance());
         }
     }
 
@@ -150,19 +142,19 @@ public class AppServiceImplementaion implements AppService {
         } catch (Exception e) {
             System.out.println("invalid input :(");
             scanner = new Scanner(System.in);
-            return 0.0;
+            return -1;
         }
         if (money < 0) {
             System.out.println("please enter positive number");
-            return 0.0;
+            return -1;
         }
         scanner.nextLine();
         return money;
     }
 
 
-    private void showDetails(int indexOfAccount) {
-        accountService.showDetails(indexOfAccount);
+    private void showDetails(Account loggedInAccount) {
+        accountService.showDetails(loggedInAccount.getUserName());
     }
 
 

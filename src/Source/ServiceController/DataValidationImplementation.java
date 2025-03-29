@@ -15,11 +15,13 @@ public class DataValidationImplementation implements DataValidation {
 
     @Override
     public boolean validatePassword(String password) {
-       return Pattern.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*_-]).{6,}$",password);
-       //at least one lowercase (?=.*?[a-z])
-       //at least one uppercase (?=.*?[A-Z])
-       //at least one digit (?=.*?[0-9])
-       //at least one special character (?=.*?[0-9])
+
+
+        return Pattern.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*_-]).{6,}$", password);
+        //at least one lowercase (?=.*?[a-z])
+        //at least one uppercase (?=.*?[A-Z])
+        //at least one digit (?=.*?[0-9])
+        //at least one special character (?=.*?[0-9])
 
         //The lookahead ( (?=.*?[A-Z]) ) is used to check if after some characters
         // if there is an occurrence of an upper case letter. Similarly, all the other

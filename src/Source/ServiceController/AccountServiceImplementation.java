@@ -11,24 +11,21 @@ public class AccountServiceImplementation implements AccountService {
 
     @Override
     public int searchForAccount(String username) {
-        int index = 0;
+        int index=0;
         for (Account ac : walletSystem.getAccounts()) {
             if (ac.getUserName().equals(username)) {
                 return index;
             }
             index++;
         }
-        if (index == walletSystem.getAccounts().size()) {
-            index = -1;
-        }
-        return index;
+        return -1;
     }
 
     @Override
 
     public boolean creatAccount(Account account) {
-        int index = searchForAccount(account.getUserName());
-        if (index==-1) {
+        int hasAccount = searchForAccount(account.getUserName());
+        if (hasAccount==-1) {
             walletSystem.getAccounts().add(account);
             return true;
         }
@@ -36,36 +33,49 @@ public class AccountServiceImplementation implements AccountService {
     }
 
     @Override
-    public int login(Account account) {
-        int index=searchForAccount(account.getUserName());
-        if(index!=-1){
-            if (walletSystem.getAccounts().get(index).getPassWord().equals(account.getPassWord())) {
-                return index;
-            }
-            else {
-                return -1;
-            }
-        }
-           return index;
+    public boolean login(Account loginAccount) {
+       int indexOfAccount= searchForAccount(loginAccount.getUserName());
+           if(indexOfAccount!=-1){
+               if(walletSystem.getAccounts().get(indexOfAccount).getPassWord().equals(loginAccount.getPassWord())){
+                   return true;
+               }
+           }
+           return false;
         }
 
 
     @Override
-    public void depositOrWithdraw(int id, double money,char option) {
-
-        double newBalance = 0;
-        switch (option){
-            case '+':
-                newBalance=walletSystem.getAccounts().get(id).getBalance() + money;
-                break;
-            case '-':
-                newBalance=walletSystem.getAccounts().get(id).getBalance() - money;
-                break;
-            default:
-                System.out.println("invalid operation");
-                break;
+    public boolean deposit(String loggedInUserName, double money) {
+        int indexOfAccount=searchForAccount(loggedInUserName);
+        if(indexOfAccount!=-1){
+            walletSystem.getAccounts().get(indexOfAccount).setBalance(
+                    walletSystem.getAccounts().get(indexOfAccount).getBalance()+money);
+            return true;
+        } else{
+            System.out.println("Error: this account may not registered");
         }
-            walletSystem.getAccounts().get(id).setBalance(newBalance);
+        return false;
+
+
+    }
+
+    @Override
+    public boolean withdraw(String loggedInUserName, double money) {
+        int  indexOfAccount=searchForAccount(loggedInUserName);
+        if(indexOfAccount!=-1){
+            if(walletSystem.getAccounts().get(indexOfAccount).getBalance()>=money){
+            walletSystem.getAccounts().get(indexOfAccount).setBalance(
+                    walletSystem.getAccounts().get(indexOfAccount).getBalance()-money);
+            return true;
+        }
+            else {
+                System.out.println("Error: no enough balance in your account");
+            }
+        }
+        else {
+            System.out.println("Error: this account may not registered");
+        }
+        return false;
 
     }
 
@@ -76,8 +86,9 @@ public class AccountServiceImplementation implements AccountService {
     }
 
     @Override
-    public void showDetails(int indexOfAccount) {
-        System.out.println(walletSystem.getAccounts().get(indexOfAccount).toString());
+    public void showDetails(String userName) {
+        int indexOfUsername=searchForAccount(userName);
+        System.out.println(walletSystem.getAccounts().get(indexOfUsername).toString());
     }
 
 
