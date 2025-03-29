@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="696d5d8f-bdd0-46f3-9bde-662dfe305c0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_WalletSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/E-wallet_System.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Source/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Source/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Source/ServiceController/AccountServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Source/ServiceController/AccountServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Source/ServiceController/AppServiceImplementaion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Source/ServiceController/AppServiceImplementaion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Source/ServiceController/DataValidationImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Source/ServiceController/DataValidationImplementation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +52,8 @@
       <option name="presentableId" value="Default" />
       <updated>1743174439264</updated>
       <workItem from="1743174440418" duration="5096000" />
-      <workItem from="1743217758786" duration="2150000" />
+      <workItem from="1743217758786" duration="2441000" />
+      <workItem from="1743269423700" duration="1611000" />
     </task>
     <servers />
   </component>
@@ -81,11 +74,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Source/ServiceController/AppServiceImplementaion.java</url>
-          <line>116</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Source/ServiceController/AppServiceImplementaion.java</url>
           <line>41</line>
