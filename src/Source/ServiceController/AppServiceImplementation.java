@@ -8,7 +8,7 @@ import model.WalletSystem;
 
 import java.util.Scanner;
 
-public class AppServiceImplementaion implements AppService {
+public class AppServiceImplementation implements AppService {
     WalletSystem walletSystem = new WalletSystem();
     AccountService accountService = new AccountServiceImplementation();
     DataValidation validation = new DataValidationImplementation();
@@ -69,6 +69,7 @@ public class AppServiceImplementaion implements AppService {
                 scanner = new Scanner(System.in);
                 continue;
             }
+            scanner.nextLine();
             switch (option) {
                 case 1:
                     deposit(loggedInAccount);
@@ -100,9 +101,9 @@ public class AppServiceImplementaion implements AppService {
         System.out.println("------------>transfer<------------");
         System.out.println("Enter the username who get money");
         String ToUserName = scanner.nextLine();
-        int validUser = accountService.searchForAccount(ToUserName);
+        boolean validUser = accountService.validUserName(ToUserName);
         //need massage when user is not found
-        if (validUser != -1) {
+        if (validUser) {
             System.out.println("please enter amount to transfer:.");
             double transferMoney = getMoney();
 
@@ -112,6 +113,9 @@ public class AppServiceImplementaion implements AppService {
                 if (accountService.withdraw(loggedInAccount.getUserName(), transferMoney)
                         && accountService.deposit(ToUserName, transferMoney)) {
                     System.out.println("transaction is done");
+                }
+                else {
+                    System.out.println("Error while transfer money");
                 }
             }
         }else{
@@ -125,10 +129,10 @@ public class AppServiceImplementaion implements AppService {
 
         double moneyFlow = getMoney();
         if (moneyFlow != -1) {
-            accountService.withdraw(loggedInAccount.getUserName(), moneyFlow);
-            System.out.println("trrrr trrr trrr : receive your money :)  trrr");
-            int indexOfAccount= accountService.searchForAccount(loggedInAccount.getUserName());
-            System.out.println("your balance is " + accountService.getBalance(indexOfAccount));//not return correct value
+            if(accountService.withdraw(loggedInAccount.getUserName(), moneyFlow)){
+                System.out.println("trrrr trrr trrr : receive your money :)  trrr");
+                System.out.println("your balance is " + accountService.getBalance(loggedInAccount.getUserName()));//not return correct value
+            }
         }
 
     }
@@ -140,8 +144,7 @@ public class AppServiceImplementaion implements AppService {
         if (moneyFlow != -1) {
             accountService.deposit(loggedInAccount.getUserName(), moneyFlow);
             System.out.println("money added successfully");
-           int indexOfAccount= accountService.searchForAccount(loggedInAccount.getUserName());
-            System.out.println("your balance is " + accountService.getBalance(indexOfAccount));//not return the balance correct
+            System.out.println("your balance is " + accountService.getBalance(loggedInAccount.getUserName()));//not return the balance correct
         }
     }
 

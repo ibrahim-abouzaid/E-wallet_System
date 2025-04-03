@@ -1,8 +1,8 @@
-import Source.ServiceController.AppServiceImplementaion;
+import Source.ServiceController.AppServiceImplementation;
 
 public class Main {
     public static void main(String[] args) {
-        AppServiceImplementaion app = new AppServiceImplementaion();
+        AppServiceImplementation app = new AppServiceImplementation();
         app.runApp();
 
 
