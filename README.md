@@ -57,3 +57,8 @@ Option: View a list of all previous transactions.
 #### Exit:
 
 Option: Exit the application.
+
+## Installation
+```bash
+git clone https://github.com/ibrahim-abouzaid/E-wallet_System.git
+```
