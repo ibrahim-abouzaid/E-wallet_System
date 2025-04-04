@@ -2,12 +2,17 @@ package Source.ServiceController;
 
 import Source.AccountService;
 import model.Account;
+import model.Transaction;
 import model.WalletSystem;
+
+import java.util.List;
 
 
 public class AccountServiceImplementation implements AccountService {
 
     private final WalletSystem walletSystem = new WalletSystem();
+
+
 
 
     @Override
@@ -84,6 +89,22 @@ public class AccountServiceImplementation implements AccountService {
         System.out.println(walletSystem.getAccounts().get(userName).toString());
     }
 
+    @Override
+    public List<Transaction> getTransactions(String userName) {
+        return walletSystem.getAccounts().get(userName).getTransactionList();
+
+    }
+
+    @Override
+    public void setTransaction(String fromUser,String toUserName, double money) {
+        walletSystem.getAccounts().get(fromUser).getTransactionList().add(new Transaction(fromUser,toUserName,money));
+    }
+
+    @Override
+    public void demoData() {
+        walletSystem.getAccounts().put("Ali", new Account("Ali","Ali12#"));
+        walletSystem.getAccounts().put("Ali2", new Account("Ali2","Ali12#"));
+    }
 
 
 }

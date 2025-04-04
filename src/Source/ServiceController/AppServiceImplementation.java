@@ -4,6 +4,7 @@ import Source.AccountService;
 import Source.AppService;
 import Source.DataValidation;
 import model.Account;
+import model.Transaction;
 import model.WalletSystem;
 
 import java.util.Scanner;
@@ -19,6 +20,7 @@ public class AppServiceImplementation implements AppService {
     @Override
     public void runApp() {
         boolean exit = false;
+        accountService.demoData();
         System.out.println("---------->Welcome to " + walletSystem.getWalletName() + "<----------");
         options(exit);
     }
@@ -60,7 +62,7 @@ public class AppServiceImplementation implements AppService {
 
         boolean exit = false;
         while (!exit) {
-            System.out.println("1-deposit   2-withdraw   3-transfer   4-Show details   5-logout");
+            System.out.println("1-deposit   2-withdraw   3-transfer   4-Show details  5-transactions  6-logout");
             int option = 0;
             try {
                 option = scanner.nextInt();
@@ -85,6 +87,9 @@ public class AppServiceImplementation implements AppService {
                     showDetails(loggedInAccount);
                     break;
                 case 5:
+                    transactionlist(loggedInAccount);
+                    break;
+                case 6:
                     System.out.println("logout");
                     exit = true;
                     break;
@@ -94,6 +99,12 @@ public class AppServiceImplementation implements AppService {
 
             }
 
+        }
+    }
+
+    private void transactionlist(Account loggedInAccount) {
+        for(Transaction transaction : accountService.getTransactions(loggedInAccount.getUserName())){
+            System.out.println(transaction.toString());
         }
     }
 
@@ -112,6 +123,7 @@ public class AppServiceImplementation implements AppService {
                 //if the deposit or withdraw return false that mean there is error with the transaction
                 if (accountService.withdraw(loggedInAccount.getUserName(), transferMoney)
                         && accountService.deposit(ToUserName, transferMoney)) {
+                    accountService.setTransaction(loggedInAccount.getUserName(),ToUserName,transferMoney);
                     System.out.println("transaction is done");
                 }
                 else {

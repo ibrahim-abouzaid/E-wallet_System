@@ -1,10 +1,22 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
     private String userName;
     private String passWord;
     private boolean active;
     private double balance;
+    private List<Transaction> transactionList=new ArrayList<Transaction>();
+
+    public List<Transaction> getTransactionList() {
+        return transactionList;
+    }
+
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
+    }
 
     public Account() {
 
