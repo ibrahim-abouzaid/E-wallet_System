@@ -24,7 +24,7 @@ public class AppServiceImplementation implements AppService {
     }
 
     void login() {
-//        DataValidationImplementation
+
         System.out.println("------>Login Account<------");
         Account account = accountDetails();
 
@@ -131,7 +131,7 @@ public class AppServiceImplementation implements AppService {
         if (moneyFlow != -1) {
             if(accountService.withdraw(loggedInAccount.getUserName(), moneyFlow)){
                 System.out.println("trrrr trrr trrr : receive your money :)  trrr");
-                System.out.println("your balance is " + accountService.getBalance(loggedInAccount.getUserName()));//not return correct value
+                System.out.println("your balance is " + accountService.getBalance(loggedInAccount.getUserName()));
             }
         }
 
@@ -144,7 +144,7 @@ public class AppServiceImplementation implements AppService {
         if (moneyFlow != -1) {
             accountService.deposit(loggedInAccount.getUserName(), moneyFlow);
             System.out.println("money added successfully");
-            System.out.println("your balance is " + accountService.getBalance(loggedInAccount.getUserName()));//not return the balance correct
+            System.out.println("your balance is " + accountService.getBalance(loggedInAccount.getUserName()));
         }
     }
 

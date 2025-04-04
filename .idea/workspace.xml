@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="696d5d8f-bdd0-46f3-9bde-662dfe305c0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-wallet_System/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-wallet_System/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-wallet_System/Source/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-wallet_System/Source/AccountService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-wallet_System/Source/ServiceController/AccountServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-wallet_System/Source/ServiceController/AccountServiceImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-wallet_System/Source/ServiceController/AppServiceImplementaion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/E-wallet_System/model/WalletSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/E-wallet_System/model/WalletSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Source/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Source/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Source/ServiceController/AccountServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Source/ServiceController/AccountServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Source/ServiceController/AppServiceImplementaion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Source/ServiceController/AppServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/WalletSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/WalletSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Source/ServiceController/AppServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Source/ServiceController/AppServiceImplementation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +60,8 @@
       <workItem from="1743217758786" duration="2441000" />
       <workItem from="1743269423700" duration="1611000" />
       <workItem from="1743332757433" duration="64000" />
-      <workItem from="1743708519127" duration="3997000" />
+      <workItem from="1743708519127" duration="4558000" />
+      <workItem from="1743777548324" duration="5000" />
     </task>
     <servers />
   </component>
